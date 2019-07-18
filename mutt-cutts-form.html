@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Mutt Cutts Grooming & walking Service </title>
+</head>
+<body>
+<h2>Mutt Cutts Walking Registration Form</h2>
+<h2>How did you hear about us?</h2>
+<form method="POST" action="https://request-inspector.glitch.me/">
+    <p>Select all that apply</p>
+    <label>
+        <input type="radio" name="q1" value="current customer"> I am a Current Customer
+    </label>
+    <label>
+        <input type="radio" name="q2" value="Radio"> Radio Advertisment
+    </label>
+    <label>
+        <input type="radio" name="q3" value="Internet"> Internet Advertisment
+    </label>
+    <label>
+        <input type="radio" name="q4" value="Refferal"> I know a current Customer
+    </label><br>
+    <h5>If you know a current customer, please put their name here</h5>
+    <textarea id="Referal" name="cust referal name"></textarea>
+    <h3>Please supply an email and password so you can login in the future</h3>
+    <input type="hidden" id="user_id" name="user_id" value="1234">
+    <p>
+        <label for="username">Email</label>
+        <input id="username" name="Email" type="text" placeholder="Enter Email">
+    </p>
+    <p>
+        <label for="password">New Password</label>
+        <input id="password" name="password" type="password" placeholder="Password">
+        <input name="newsletter_signup" value="true" type="checkbox" checked>Sign Up For The Email Newsletter
+    </p>
+    <p>Tell us a little about your pet and why you cannot just walk them yourself!</p>
+    <textarea id="body-text" name="body"></textarea><br>
+    <p>Is your dog aggressive?</p>
+    <input name="Dog-aggresive-true" value="true" type="checkbox"> Yes
+    <input name="Dog-aggresive-false" value="true" type="checkbox"> No
+    <h5>What sort of equipment can you supply?</h5>
+    <p>Please select all that apply</p>
+    <label>
+        <input type="radio" name="q1" value="harness"> Harness
+    </label>
+    <label>
+        <input type="radio" name="q2" value="chain"> Chain
+    </label>
+    <label>
+        <input type="radio" name="q3" value="Prod"> Cattle Prod
+    </label>
+    <label>
+        <input type="radio" name="q4" value="vacuum"> Vacuumm
+    </label>
+    <p>What breed is your dog?</p>
+    <label for="Pick One">Pick One</label>
+    <select id="Your Choice" name="Your Choice">
+        <option>Pug</option>
+        <option>Lab</option>
+        <option>Chi-weenie</option>
+        <option>Caucasian Mountian Dog</option>
+        <option>Teacup Minpin</option>
+        <option>ALL GLORY TO HYPNO TOAD</option>
+        <option>Whooping Terrier</option>
+        <option>Snarff</option>
+    </select><br>
+    <p>Thanks for playing!</p>
+    <input type="submit">
+</form>
+</body>
+</html>
