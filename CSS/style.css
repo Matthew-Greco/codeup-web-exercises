@@ -1,7 +1,40 @@
+
 .fancy-header {
     color: purple;
     text-decoration: underline;
 }
-body {background-color: steelblue}
-h1, h2 {color: white}
+body {
+    background-image: url("../img/repeat-pattern3.jpeg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-color: lightgray;
+}
+element { font-family: cursive}
+ul {list-style-type: lower-greek;}
+tr, td {
+    padding: 2px
+}
+tr {
+    font-weight: bold;
+    text-decoration: underline;
+}
+h1, h2 {
+    color: dodgerblue;}
+a:link {
+    color: red;
+}
 
+/* visited (:link) */
+a:visited {
+    color: black;
+}
+
+/* mouse over (:link) */
+a:hover {
+    color: green;
+}
+
+/* selected (:link) */
+a:active {
+    color: yellow;
+}
