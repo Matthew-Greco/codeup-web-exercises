@@ -1,40 +1,55 @@
-
 .fancy-header {
     color: purple;
     text-decoration: underline;
 }
 body {
-    background-image: url("../img/repeat-pattern3.jpeg");
-    background-repeat: no-repeat;
-    background-position: right top;
+    background-image: url("../img/repeat-pattern3.jpg");
     background-color: lightgray;
 }
-element { font-family: cursive}
-ul {list-style-type: lower-greek;}
+element {
+    font-family: cursive
+}
+ul {
+    list-style-type: lower-greek;
+}
 tr, td {
-    padding: 2px
+    padding: 2px;
+    color: springgreen;
 }
 tr {
     font-weight: bold;
     text-decoration: underline;
 }
+th {
+    color: mintcream;
+}
 h1, h2 {
-    color: dodgerblue;}
+    color: white;
+}
 a:link {
+    color: white;
+}
+a:visited {
     color: red;
 }
-
-/* visited (:link) */
-a:visited {
-    color: black;
-}
-
-/* mouse over (:link) */
 a:hover {
     color: green;
 }
-
-/* selected (:link) */
 a:active {
     color: yellow;
+}
+main {
+    color: springgreen;
+}
+table {
+    background-color: transparent;
+    text-align: center;
+}
+#container {
+    margin: 20px auto;
+    width: 500px;
+    padding: 10px;
+}
+li {
+    font-size: xx-large;
 }
