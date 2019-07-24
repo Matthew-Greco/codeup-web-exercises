@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+nav {
+    background: grey;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 5em;
+    /* made unordered list a flex container */
+}
+nav a {
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    display: inline-block; /* inline-block to increase clickable area beyond the text */
+     /* increases clickable area of anchor tags on all sides by 1em */
+}
+nav a:hover {
+    color: blue;
+}
+.Logo {
+    /*
+        this allows the last flex item to be right justified
+        by filling remaining space to the left of the flex item with margin
+    */
+    margin: .5em auto;
+    /*align-items: stretch; height: 5em;*/
+    font-size: 3em;
+}
+nav ul li{
+    margin: 1em;
+}
+
+
+
+
+nav li{
+
+}
