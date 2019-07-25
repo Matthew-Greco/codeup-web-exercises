@@ -83,6 +83,7 @@ header a:hover {
     grid-area: 1/1/ 2/6;
     background: purple;
     /* TODO: define the grid area of this element to take up the entire first row of the .wrapper grid  */
+    transition: border .2s;
 }
 
 nav ul {
