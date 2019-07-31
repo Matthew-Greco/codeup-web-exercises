@@ -1,0 +1,179 @@
+
+
+.jumbotron-fluid {
+    width: 100%;
+    background-image: url("../img/pizza (1).png");
+    background-size: cover;
+}
+
+.display-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background: rgba(232, 236, 241, 0.5);
+    margin: 0;
+    padding: 0;
+
+}
+
+.jumbotron-fluid .container {
+    margin: 0;
+    padding: 0;
+}
+
+.media .container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.btn-outline-success {
+    color: black;
+    border-color: black;
+}
+.choices1{
+    display: flex;
+    padding-right: 20px;
+    width: 100%;
+}
+.card-header{
+    width: 100%;
+    background-color: lightblue;
+    color: rgb(78 126 154);
+    padding: 1.5rem;
+}
+
+.card{
+    display: flex;
+    width: 100%;
+    border: none;
+}
+
+.size-crust{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.list-group-item{
+    padding: 0;
+    margin: 0;
+}
+.card-body{
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.card-body ul{
+    width: 100%;
+}
+
+
+.card-body ul li{
+    text-decoration: none;
+    list-style-type: none;
+}
+.list-group-item0{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    border: 1px solid rgba(0,0,0,.125);
+    background-color: lightgray;
+
+}
+
+.list-group-item1{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    border: 1px solid rgba(0,0,0,.125);
+
+}
+.list-group-item2{
+    border: 1px solid rgba(0,0,0,.125);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    background-color: lightblue;
+    color: rgb(78 126 154);
+}
+.list-group-item3{
+    border: 1px solid rgba(0,0,0,.125);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    background-color: lightblue;
+    color: rgb(78 126 154);
+
+}
+.choices2{
+    width: 93.7%;
+    padding-top: 200px;
+    padding-left: 15px;
+}
+
+#main1{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+#main2{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+}
+.card .card-body .card-title1{
+    background-color: lightgrey;
+}
+.card .card-body{
+    border-bottom: 1px lightblue;
+
+}
+.container-fluid{
+    width: 100%;
+    padding: 0;
+}
+.card-header1{
+    background-color: lightblue;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border: skyblue;
+    width: 100%;
+    color: rgb(78 126 154);
+
+}
+.card-footer{
+    background-color: lightgrey;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border: skyblue;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.card-title{
+    background-color: lightgrey;
+    border: 1px solid rgba(0,0,0,.125);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding-left: 10px;
+
+}
+#dropdownMenuButton{
+    color: black;
+    background-color: white;
+    padding-left: 450px;
+    padding-top: 0;
+    padding-bottom: 0;
+    /*text-align: left;*/
+}
+
+#dropdownMenuButton button{
+    text-align: start;
+}
