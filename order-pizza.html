@@ -58,9 +58,9 @@
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">.</div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"></div>
     </div>
     <div class="card-header1">
         Choose Size and Crust
@@ -100,57 +100,86 @@
                 Choose Cheese and Sauce
             </div>
             <div class="card-body">
-                <h5 class="card-title">Cheese?</h5>
-                <div class="card">
-                    <div class="card-header">
-                        Cheese
-                        <div class="dropdown d-inline-block">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Light
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Regular</a>
-                                <a class="dropdown-item" href="#">Extra</a>
-                            </div>
-                        </div>
-                    </div>
+                <h5 class="card-title">Cheese</h5>
+                <div class="card" id="cheese-card">
+                    <form class="form-inline">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">How Much?</label>
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option selected>Regular</option>
+                            <option value="1">Regular</option>
+                            <option value="2">Extra</option>
+                            <option value="3">Double</option>
+                        </select>
+                    </form>
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Sauce?</h5>
-                <div class="card">
-                    <div class="card-header">
-                        Sauce
-                        <div class="dropdown d-inline-block">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Robust Inspired Tomato Sauce
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Regular</a>
-                                <a class="dropdown-item" href="#">Extra</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-header">
-                        How Much?
-                        <div class="dropdown d-inline-block">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Light
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Regular</a>
-                                <a class="dropdown-item" href="#">Extra</a>
-                            </div>
-                        </div>
-                    </div>
+                <h5 class="card-title">Sauce</h5>
+                <div class="card" id="sauce-card">
+                    <form class="form-inline">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type</label>
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option selected>Regular</option>
+                            <option value="1">Regular</option>
+                            <option value="2">Extra</option>
+                            <option value="3">Double</option>
+                        </select>
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">How Much</label>
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option selected>Robust Inspired Tomato Sauce</option>
+                            <option value="1">Regular</option>
+                            <option value="2">Extra</option>
+                            <option value="3">Double</option>
+                        </select>
                 </div>
             </div>
-            <div class="card-footer text-muted"><a href="#" class="btn btn-primary"><i
-                    class="fas fa-caret-left"> Previous Step</i><a href="#" class="btn btn-primary">Next Step <i
-                    class="fas fa-caret-right"></i>
+            <div class="card-footer text-muted">
+                <a href="#" class="btn btn-primary"><i class="fas fa-caret-left"> Previous Step</i></a>
+                <a href="#" class="btn btn-primary">Next Step <i class="fas fa-caret-right"></i></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Choose Toppings
+            </div>
+            <div class="card-body" id="cheese-body">
+                <h5 class="card-title1">Choose Meats</h5>
+                <div class="card" id="meats-card">
+                </div>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Veggies</h5>
+                <div class="card" id="veggies-card">
+
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <a href="#" class="btn btn-primary"><i class="fas fa-caret-left"> Previous Step</i></a>
+                <a href="#" class="btn btn-primary">Next Step <i class="fas fa-caret-right"></i></a>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
