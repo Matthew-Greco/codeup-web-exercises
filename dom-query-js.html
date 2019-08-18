@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM: Query and Modify</title>
+</head>
+<body>
+<h1 id="main-header">Hello World!</h1>
+<ul>
+    <li data-dbid="1">Item 1</li>
+    <li data-dbid="2">Item 2</li>
+    <li data-dbid="3">Item 3</li>
+    <li data-dbid="4">Item 4</li>
+    <li data-dbid="5">Item 5</li>
+</ul>
+<h2 id="sub-header">Hello Again.</h2>
+<p class="sub-paragraph">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum.
+</p>
+<button id="btn1" class="event-btns">Click Me first!</button>
+<button id="btn2" class="event-btns">Click Me second!!</button>
+<button id="btn3" class="event-btns">Click Me third!!!</button>
+<button id="btn4" class="event-btns">Click Me fourth!!!!</button>
+<button id="btn5" class="event-btns">Click Me fifth!!!!!</button>
+
+<script>
+    (function () {
+        "use strict";
+        var mainHeader = document.getElementById("main-header");
+
+        var subHeader = document.getElementById("sub-header");
+
+        var listItems = document.getElementsByTagName('li');
+
+        for (var i = 0; i < listItems.length; i++) {
+            if (listItems[i].getAttribute("data-dbid") === "1") {
+                listItems[i].style.color = "blue";
+            }
+        }
+        var subParagraph = document.getElementsByClassName("sub-paragraph");
+
+        var listener = function (event) {
+            console.log(mainHeader.innerHTML = "Javascript is Cool");
+        };
+        var btn = document.getElementById('btn1');
+        btn.addEventListener('click', listener);
+        var changeColor = function (event) {
+            subHeader.style.color = "blue";
+            console.log('The sub-header turned to blue.')
+        };
+        var btn = document.getElementById('btn2');
+        btn.addEventListener('click', changeColor);
+        var everyOtherColor = function (event) {
+            for (var i = 0; i < listItems.length; i++) {
+                if ((i % 2 == 0)) {
+                    listItems[i].style.color = 'grey'
+                }
+            }
+            console.log("Every other list color turned to grey");
+        };
+        var btn = document.getElementById('btn3');
+        btn.addEventListener('click', everyOtherColor);
+        var listFirstBlue = function (event) {
+            for (var i = 0; i < listItems.length; i++) {
+                if (listItems[i].getAttribute("data-dbid") == 1) {
+                    listItems[i].style.color = "blue";
+                }
+            }
+            console.log('the first list id turned to blue');
+        };
+        var btn = document.getElementById('btn4');
+        btn.addEventListener('click', listFirstBlue);
+        var missionAccomplished = function (event) {
+            subParagraph[0].innerText = "Mission Accomplished!";
+            console.log("The paragraph changed from Lorem Ipsum to Mission Accomplished!");
+        };
+        var btn = document.getElementById('btn5');
+        btn.addEventListener('click', missionAccomplished);
+
+    })();
+</script>
+
+</body>
+</html>
+
