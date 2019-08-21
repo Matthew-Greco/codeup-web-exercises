@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8'/>
-    <title>Change a map's style</title>
+    <title>Fun times with maps</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet'/>
@@ -28,31 +28,27 @@
         }
     </style>
     <script src=".gitignore/keys.js"></script>
+
 </head>
 <body>
 
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet'
+      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css'
+      type='text/css'/>
+
 <div id='map'></div>
 <div id='menu'>
-    <input id='streets-v11' type='radio' name='rtoggle' value='streets' checked='checked'>
-    <label for='streets'>streets</label>
-    <input id='light-v10' type='radio' name='rtoggle' value='light'>
-    <label for='light'>light</label>
-    <input id='dark-v10' type='radio' name='rtoggle' value='dark'>
-    <label for='dark'>dark</label>
-    <input id='outdoors-v11' type='radio' name='rtoggle' value='outdoors'>
-    <label for='outdoors'>outdoors</label>
-    <input id='satellite-v9' type='radio' name='rtoggle' value='satellite'>
-    <label for='satellite'>satellite</label>
 </div>
 <script>
     mapboxgl.accessToken = mapBoxToken;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        zoom: 13,
-        center: [-98.140289, 29.571341]
+        zoom: 5,
+        center: [-115.1398, 36.1699]
     });
-    setTimeout(function(){
+    setTimeout(function () {
         map.setStyle(map)
     }, 5000);
 
@@ -89,8 +85,7 @@
             'paint': {
                 'fill-extrusion-color': '#aaa',
 
-// use an 'interpolate' expression to add a smooth transition effect to the
-// buildings as the user zooms in
+
                 'fill-extrusion-height': [
                     "interpolate", ["linear"], ["zoom"],
                     15, 0,
@@ -105,6 +100,28 @@
             }
         }, labelLayerId);
     });
+    map.addControl(new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    }));
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+
+    var marker1 = new mapboxgl.Marker()
+        .setLngLat([-115.138995, 36.166950])
+        .addTo(map);
+
+    var popup = new mapboxgl.Popup()
+        .setLngLat([-115.138995, 36.166950])
+        .setHTML("<p>Eat</p>");
+
+
+    marker1.setPopup(popup);
+
+
+
+
 </script>
 
 

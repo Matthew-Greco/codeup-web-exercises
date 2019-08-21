@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Fun times with maps</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet'/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <style>
+        /*#menu {*/
+        /*    position: absolute;*/
+        /*    background: #fff;*/
+        /*    padding: 10px;*/
+        /*    font-family: 'Open Sans', sans-serif;*/
+        /*}*/
+    </style>
+    <script src=".gitignore/keys.js"></script>
+
+</head>
+<body>
+<h1>Mapbox Maps API Curriculum Exercise</h1>
+<div id='map'></div>
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src=".gitignore/keys.js"></script>
+<!--<script src="js/mapbox-geocoder-utils.js"></script>-->
+<!-- Custom JS -->
+<script>
+    var accessToken = mapBoxToken;
+    mapboxgl.accessToken = accessToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 5,
+        center: [-75.165222, 39.952583]
+    });
+    geocode("1450 John F Kennedy Blvd, Philadelphia, PA 19176", mapBoxToken).then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(15);
+    });
+    var dmitrisInfo = {
+        address: "944 N 2nd St, Philadelphia, PA 19123",
+        popupHTML: "<p>Dmitri's Philadelphia</p>"
+    };
+
+    var debsInfo = {
+        address: "747 Columbia St, Hudson, New York 12534-2415",
+        popupHTML: "<p>Little Deb's Oasis Hudson</p>"
+    };
+
+    var mogadorInfo = {
+        address: "101 Saint Marks Place, East Village, NY, 10009",
+        popupHTML: "<p>Cafe Mogador New York</p>"
+    };
+    // function placeMarkerAndPopup(info, token, map) {
+    //     geocode(info.address, token).then(function(coordinates) {
+    //         var popup = new mapboxgl.Popup()
+    //             .setHTML(info.popupHTML);
+    //         var marker = new mapboxgl.Marker()
+    //             .setLngLat(coordinates)
+    //             .addTo(map)
+    //             .setPopup(popup);
+    //         // popup.addTo(map);
+    //     });
+    // }
+    placeMarkerAndPopup(dmitrisInfo, accessToken, map);
+    placeMarkerAndPopup(debsInfo, accessToken, map);
+    placeMarkerAndPopup(mogadorInfo, accessToken, map);
+    // refactored array
+    var favRestaurants = [
+        {
+            name: "Dmitri's",
+            address: "944 N 2nd St, Philadelphia, PA 19123",
+            message: "<p><b>Dmitri's</b> Philadelphia</p> <img src=\"img/dmitris2.jpg\" height=\"200\" width=\"200\"/>"
+        },
+        {
+            name: "Little Deb's",
+            address: "747 Columbia St, Hudson, New York 12534-2415",
+            message: "<p><b>Lil' Deb's Oasis</b> Hudson</p> <img src=\"img/lildebs2.png\" height=\"200\" width=\"200\"/>"
+        },
+        {
+            name: "Cafe Mogador",
+            address: "101 Saint Marks Place, East Village, NY, 10009",
+            message: "<p><b>Cafe Mogador</b> New York</p> <img src=\"img/mogador.jpg\" height=\"200\" width=\"200\"/>"
+        }
+    ];
+    function placeMarkerAndPopup(restaurant, token, map) {
+        return geocode(restaurant.address, token).then(function (coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(restaurant.message);
+            return marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+        });
+    }
+    for (var i = 0; i < favRestaurants.length; i++) {
+        placeMarkerAndPopup(favRestaurants[i], accessToken, map);
+    }
+</script>
+</body>
+</html>

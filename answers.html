@@ -1,0 +1,434 @@
+function isBoolean(input) {
+return typeof input == "boolean";
+}
+// ===========
+// === isNumeric
+function isNumeric(input) {
+if (input === true || input === false || input === null){
+return false;
+}else{
+return !isNaN(input);
+}
+}
+///Lemon solution
+function isNumeric(val) {
+return !isNaN(parseFloat(val));
+}
+// Davids solution
+function isNumeric(input) {
+return !isNaN(parseFloat(input));
+}
+// ==============
+// ==== isString
+function isString(input) {
+return value === String(input);
+}
+function isString(input) {
+}
+// ========
+// isArray
+function isArray(input) {
+return Array.isArray(input);
+}
+// ===============
+// isNegative
+function isNegative(input) {
+return input < 0;
+}
+// ==========
+// isPositive
+function isPositive(input) {
+if (!isNumeric(input)){
+return false
+}  else {
+return input > 0;
+}
+}
+function isPositive(input) {
+return parseFloat(input) > 0;
+}
+// =================
+// increment
+function increment(input) {
+if (isNumeric(input)){
+return input + 1;
+} else {
+return false;
+}
+}
+// ================
+// decrement
+function decrement(input) {
+if (isNumeric(input)){
+return input - 1;
+} else {
+return false;
+}
+}
+// ================
+// Square
+function decrement(input) {
+var numIsNumeric = isNumeric(input);
+console.log(numIsNumeric);
+if (numIsNumeric){
+// return input * 1;
+// return Math.pow(input, 2);
+} else {
+return false;
+}
+};
+// ===========
+// upperCase
+function upperCase(input) {
+if (typeof input === "string"){
+input = input.toUpperCase();
+return input;
+} else{
+return false;
+}
+}
+// ====Davids solution
+function upperCase(input) {
+if (isString(input) && !isNumeric(input)){
+return input.toUpperCase();
+} else{
+return false;
+}
+}
+// ===========
+// isPalindrome
+// Source: https://medium.com/sonyamoisset/reverse-a-string-in-javascript-a18027b8e91c
+function reverseString(str) {
+// Step 1. Use the split() method to return a new array
+var splitString = str.split(""); // var splitString = "hello".split("");
+// ["h", "e", "l", "l", "o"]
+// Step 2. Use the reverse() method to reverse the new created array
+var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+// ["o", "l", "l", "e", "h"]
+// Step 3. Use the join() method to join all elements of the array into a string
+var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+// "olleh"
+//Step 4. Return the reversed string
+return joinArray; // "olleh"
+}
+function isPalindrome(input) {
+if (isString(input)) {
+return reverseString(upperCase(input)) === upperCase(input);
+} else {
+return false;
+}
+}
+// ==============
+// getHighestNumber
+function getHighestNumber(num1, num2, num3) {
+if(!isNumeric(num1) || !isNumeric(num2) || !isNumeric(num3)
+{
+return false;
+}
+var max = parseFloat(num1);
+if(parseFloat(num2) > max){
+max = parseFloat(num2)
+}
+if(parseFloat(num3) > max){
+max = parseFloat(num2)
+}
+return max;
+}
+// ======Mark solution
+function getHighestNumber(num1, num2, num3) {
+if(!isNumeric(num1) || !isNumeric(num2) || !isNumeric(num3)
+{
+return false;
+} else{
+return Math.max(num1,num2,num3)
+}
+}
+// =============
+// containsVowel
+function containsVowel(input) {
+if (!isString(input)){
+return false;
+}
+var caseInsensitive = upperCase(input);
+if (caseInsensitive.indexOf("A") > -1 ||
+caseInsensitive.indexOf("E") > -1 ||
+caseInsensitive.indexOf("I") > -1 ||
+caseInsensitive.indexOf("O") > -1 ||
+caseInsensitive.indexOf("U") > -1)
+{
+return true;
+} else{
+return false;
+}
+}
+// -==============
+// add
+function add(num1, num2) {
+if (isNumeric(num1) && isNumeric(num2)){
+return parseFloat(num1) + parseFloat(num2);
+}else{
+return false;
+}
+}
+// ============
+// multiply
+function multiply(num1, num2) {
+if (isNumeric(num1) && isNumeric(num2)){
+return parseFloat(num1) * parseFloat(num2);
+}else{
+return false;
+}
+}
+// =================
+// sumOfSquares
+function sumOfSquares(num1, num2) {
+//     if (isNumeric(num1) && isNumeric(num2)){
+//         return (num1 * num1) * (num2 * num2);
+//     }else{
+//         return false;
+//     }
+//
+// }
+function sumOfSquares(num1, num2) {
+if (isNumeric(num1) && isNumeric(num2)){
+return add(square(num1), square(num2));
+}else{
+return false;
+}
+};
+
+"use strict";
+
+/**
+* Write your solutions here.
+*
+* **Note**: While normally it is good practice to wrap your javascript in an
+* immediately invoked function expression (iife), you should _not_ do that
+* here. If you do, the automated tests will not be able to see your functions.
+*/
+
+/// This is a boolean function; checks specifically for bools.
+function isBoolean(input) {
+return typeof input === "boolean";
+}// correct
+
+/// This is a numeric function; checks specifically for numbers.
+function isNumeric(input) {
+//     if (input === true || input === false || input === null){
+//     return typeof input === "number";
+// }
+return !isNaN(parseFloat(input));
+}
+
+/// This is a string function; checks specifically for strings
+function isString(input) {
+return typeof input === "string";
+
+//another option >>
+// return input === String(input);
+}
+
+/// This is an Array function; checks specifically for arrays
+function isArray(input) {
+return input.isArray(input)
+
+// another option >>
+// return Array.isArray(input)
+
+// another option >>
+// if(input && typeof input === "object" && input.constructor === Array)
+}
+
+function isNegative(num) {
+return num < 0;
+}
+
+function isPositive(num) {
+if (num > 0) {
+return true;
+} else if (isNaN(typeof num)) {
+return false;
+}
+// another option >>
+//if (!isNumeric(input)) {
+//     return false
+// }else {
+//     return input > 0;
+// }
+
+// another option >>
+// return (parseFloat(input) > 0) === true;
+}
+
+//  <<<< refactor last isPositive console.log(true)
+
+
+function increment(input) {
+// if (isNumeric(input)){
+return input + 1;
+// }else {
+//     return false;
+// }
+}
+
+
+function decrement(input) {
+// if (isNumeric(input)){
+return input - 1;
+// }else {
+//     return false;
+// }
+}
+
+function square(input) {
+if (isNumeric(input)) {
+return input * input;
+// return Math.pow(input,2)
+} else {
+return false;
+}
+}
+
+function upperCase(input) {
+if (typeof input === "string" && isNumeric(input) === false) {
+input = input.toUpperCase();
+// original solution >>>
+// return input.toUpperCase()
+} else {
+return false;
+}
+}
+
+
+// src: https://medium.com/free-code-camp/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+// function reverseString(str) {
+//     // Step 1. Use the split() method to return a new array
+//     var splitString = str.split(""); // var splitString = "hello".split("");
+//     // ["h", "e", "l", "l", "o"]
+//
+//     // Step 2. Use the reverse() method to reverse the new created array
+//     var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+//     // ["o", "l", "l", "e", "h"]
+//
+//     // Step 3. Use the join() method to join all elements of the array into a string
+//     var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+//     // "olleh"
+//
+//     //Step 4. Return the reversed string
+//     return joinArray; // "olleh"
+// }
+//
+// reverseString("hello");
+function isPalindrome(input) {
+var splitString = input.split("");
+console.log(splitString);
+// var reverseArray = splitString.reverse();
+}
+isPalindrome(racecar);
+
+// function isPalindrome(input) {
+//     return input.length.toLowerCase() === input.reverse.toLowerCase();
+// }
+
+/// another option
+//     if (isString(input){
+//         return reverseString()
+//     }
+
+function getHighestNumber(num1, num2, num3) {
+if (typeof (num1 + num2 + num3) === "number" || "string") {
+var high = (num1 + num2 + num3).split(" ")
+return high.max();
+}
+}
+
+// another option
+// if (!isNumeric(num1) + !isNumeric(num2) + !isNumeric(num3)){
+//     return false;
+// }
+// var high = parseFloat(num1);
+// if (parseFloat(num2) > high){
+//     high = parseFloat(num2);
+// }
+// if (parseFloat(num3) > high){
+//     high = parseFloat(num3);
+// }
+// return max;
+
+
+
+
+
+
+
+function containsVowel(input) {
+return input.charAt("a,e,i,o,u") === true;
+
+// if (!isString(input)){
+//     return false;
+// }else {
+//         var caseInsensitive = upperCase(input);
+//         if (caseInsensitive.indexOf("A") > -1 ||
+//             caseInsensitive.indexOf("E") > -1 ||
+//             caseInsensitive.indexOf("I") > -1 ||
+//             caseInsensitive.indexOf("O") > -1 ||
+//             caseInsensitive.indexOf("U") > -1)
+//    return true;
+//     }else {
+//     return false;
+//
+}
+
+function add(input1, input2) {
+if (typeof input === "number") {
+var add_input = input1 + input2;
+return add_input;
+} else {
+return false;
+}
+}
+
+// another option
+//     if (isNumeric(input1) && isNumeric(input2)){
+//     return parseFloat(input1) + parseFloat(input2);
+// }else {
+//     return false;}
+// }
+
+
+function multiply(input1, input2) {
+if (typeof input == "number") {
+var mult_input = input1 * input2;
+return mult_input;
+} else {
+return false;
+}
+}
+
+// another option
+//     if (isNumeric(input1) && isNumeric(input2)){
+//     return parseFloat(input1) * parseFloat(input2);
+// }else {
+//     return false;}
+// }
+
+function sumOfSquares(input1, input2) {
+if (typeof input == "number") {
+var squared_input = input1 * input2;
+return squared_input;
+} else {
+return false;
+}
+}
+
+
+//another option
+// if (isNumeric(input1) && isNumeric(input2)) {
+//     return add(square(input1), square(input2));
+// }else {
+//     return false;
+// }
+// }
+
+
+
