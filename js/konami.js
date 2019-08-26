@@ -1,14 +1,4 @@
 "use strict";
-var $audio = $('audio');
-var audio = $audio[0];
-var $img = $('img');
-
-$img.hover(function () {
-    audio.play();
-}, function () {
-    audio.pause();
-});
-$('h1').css('text-align', 'center');
 //  Up, Up, Down, Down, Left, Right, Left, Right, B, A
 var konamiArr = [
     "ArrowUp",
@@ -31,6 +21,7 @@ var doomArr = [
 ];
 var pushArr = [];
 $(document).keyup(function (event) {
+    var audio = new Audio("sounds/fail-trombone-01.mp3");
     var konamid = true;
     pushArr.push(event.key);
     if (pushArr.length > 10) {
@@ -42,13 +33,32 @@ $(document).keyup(function (event) {
         }
     }
     if (konamid && pushArr.length === 10) {
+        audio.play();
         $('body').css({
-            'background-image': 'url("https://media.giphy.com/media/nXxOjZrbnbRxS/giphy.gif")',
-            'background-repeat': 'no-repeat',
-            'background-position': 'center 0%'
+            'background-image': 'url("https://media.giphy.com/media/3ohzdYt5HYinIx13ji/giphy.gif")',
+            'background-size': 'cover'
+
         });
-        $('h1').css('display', 'none');
+        $(function () {
+            $('button').on('click', function () {
+                var r = $('<input type="button" value="Try Again?"/>');
+                $("h1").append(r);
+            });
+        });
+        $(document).ready(function () {
+
+            $("button").click(function () {
+
+                location.reload(true);
+
+            });
+
+        });
+
+
     }
+
+
 });
 var pushArr2 = [];
 $(document).keyup(function (event) {

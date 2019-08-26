@@ -8,6 +8,8 @@
  * Copyright (c) 2018 Daniel Eden
  */
 
+
+
 @-webkit-keyframes bounce {
     from,
     20%,
@@ -3622,3 +3624,12 @@
 /*    }*/
 /*}*/
 
+h1 {
+    height: 100%;
+    width: 100%;
+    /*background: red;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
