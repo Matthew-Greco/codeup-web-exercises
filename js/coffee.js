@@ -55,7 +55,7 @@ var coffees = [{
     id: 14,
     name: 'French',
     roast: 'dark'
-},];
+}];
 
 function renderCoffee(coffee) {
     var html = '';

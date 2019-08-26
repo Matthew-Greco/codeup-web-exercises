@@ -5,6 +5,7 @@
 header {
     width: 100%;
     /*clear: both;
+
     */
     background-color: #f5f4e3;
     border-top: 0.1em solid #444;
@@ -30,7 +31,8 @@ header img {
 body {
     width: 100%;
     background-attachment: fixed;
-    /*background-image: url("http://www.uidownload.com/files/128/504/881/seamless-coffee-background-free-vector.jpg");*/
+    background-image: url("https://s3.envato.com/files/256760345/coffpl_nov-7.jpg");
+    background-size: cover;
 }
 
 main {
@@ -77,3 +79,17 @@ input[type="text"], textarea, select {
 label {
     font-size: 2em;
 }
+main .col-lg-6{
+    /*background-color: hotpink;*/
+}
+h5 {
+    font-size: 25px;
+}
+h1{
+
+}
+.row{
+    /*background-image: url("https://s3.envato.com/files/256760345/coffpl_nov-7.jpg");*/
+    /*background-size: cover;*/
+}
+
