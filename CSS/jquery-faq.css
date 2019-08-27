@@ -1,0 +1,26 @@
+.invisible {
+    display: none;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.headQ {
+    font-weight: bold;
+}
+
+.qsBody{
+    display: none;
+}
+
+.fontWeight {
+    font-weight: bold;
+}
+.liColor {
+    color: blue;
+}
