@@ -1,5 +1,7 @@
 .invisible {
     display: none;
+    color: lightgrey;
+
 }
 
 .highlighted {
@@ -14,13 +16,21 @@
     font-weight: bold;
 }
 
-.qsBody{
+.qsBody {
     display: none;
 }
 
 .fontWeight {
     font-weight: bold;
 }
+
 .liColor {
     color: blue;
+}
+p{
+
+}
+
+body {
+    background-color: powderblue;
 }
