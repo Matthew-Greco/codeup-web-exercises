@@ -38,20 +38,13 @@ $(document).keyup(function (event) {
             'background-image': 'url("https://media.giphy.com/media/3ohzdYt5HYinIx13ji/giphy.gif")',
             'background-size': 'cover'
 
+
         });
-        $(function () {
-            $('button').on('click', function () {
-                var r = $('<input type="button" value="Try Again?"/>');
-                $("h1").append(r);
-            });
-        });
-        $(document).ready(function () {
+        var r = '<input type="button" value="Try Again?"/>';
+        $("h1").append(r);
+        $("input").click(function () {
 
-            $("button").click(function () {
-
-                location.reload(true);
-
-            });
+            location.reload(true);
 
         });
 
