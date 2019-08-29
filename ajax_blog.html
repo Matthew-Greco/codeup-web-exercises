@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX BLOG</title>
+    <style>
+
+        #theNavbar {
+            margin-bottom: 20px;
+            padding-top: 50px;
+            height: 195px;
+            background-size: cover;
+            border: black;
+            background-color: black;
+            text-align: center;
+            font-size: 38px;
+            color: #5cb2c9;
+        }
+
+
+        body {
+            background-image: url("http://chauvinbrothers.com/attachments/Image/Hardware_1.jpg?template=generic");
+        }
+
+        .container {
+            width: 75%;
+            margin-top: 65px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .Aligner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Aligner-item {
+            max-width: 80%;
+        }
+
+        .blogStructure {
+            position: relative;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15), 0 5px 25px 0 rgba(0, 0, 0, 0.15);
+            background-color: white;
+        }
+
+
+        #formTopic {
+            margin-top: 20px;
+            width: 692px;
+            height: 50px;
+            border-radius: 1px;
+            border: none;
+            outline: none;
+            font-size: 19px;
+            font-weight: 400;
+        }
+
+        #formTopic:focus {
+            box-shadow: 0 0px 25px rgba(0, 0, 0, 0.40), 0 10px 25px 0 rgba(0, 0, 0, 0.40); /* (255, 255, 255, x) for white */
+        }
+
+        #formContent {
+            margin-top: 10px;
+            width: 692px;
+            height: 200px;
+            border-radius: 1px;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 17px;
+        }
+
+        #formContent:focus {
+            box-shadow: 0 0px 25px rgba(0, 0, 0, 0.40), 0 10px 25px 0 rgba(0, 0, 0, 0.40);
+        }
+
+        #formCategories {
+            width: 343px;
+            height: 30px;
+            outline: none;
+            border-radius: 1px;
+            border: none;
+            font-size: 17px;
+        }
+
+        #formCategories:focus {
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.40), 0 10px 25px 0 rgba(0, 0, 0, 0.40);
+        }
+
+        #formDate {
+            margin-top: 10px;
+            width: 342px;
+            height: 30px;
+            border-radius: 1px;
+            border: none;
+            outline: none;
+            font-size: 17px;
+        }
+
+        #formDate:focus {
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.40), 0 10px 25px 0 rgba(0, 0, 0, 0.40);
+        }
+
+        .wrapper {
+            text-align: center;
+        }
+
+        #submitPost {
+            position: relative;
+            top: 50%;
+            margin-top: 30px;
+            margin-bottom: 25px;
+            padding: 20px;
+            width: 150px;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+        }
+
+        #submitPost:hover {
+            background-color: #26c96c;
+            box-shadow: 0 5px 50px rgba(0, 0, 0, 0.19), 0 10px 50px 0 rgba(0, 0, 0, 0.19);
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+
+
+        .removePost {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .removePostSpan {
+            color: darkgrey;
+            font-size: 15px;
+        }
+
+        .removePostSpan:hover {
+            color: darkred;
+        }
+
+
+        footer {
+            z-index: 9000;
+            height: 120px;
+            padding-top: 50px;
+            padding-right: 25px;
+            background-color: #000000;
+            text-align: right;
+            font-size: 24px;
+            color: #5cb2c9;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-default" id="theNavbar">
+    Tool Blog *Now with 100% more AJAX!
+
+</nav>
+
+
+<div class="container" id="posts">
+</div>
+
+
+<div class="Aligner">
+    <div class="Aligner-item">
+        <form method="post" action="/data/blog.json">
+            <div>
+                <label for="formTopic"></label>
+                <input type="text" id="formTopic" placeholder="Topic" required>
+            </div>
+            <div>
+                <label for="formContent"></label>
+                <textarea id="formContent" placeholder="Content" required></textarea>
+            </div>
+            <div>
+                <label for="formCategories"></label>
+                <input type="text" id="formCategories" placeholder="Categories" required>
+                <label for="formDate"></label>
+                <input type="text" id="formDate" placeholder="Month Date, Year" required>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="wrapper">
+    <button id="submitPost" class="btn btn-primary">Submit New Post</button>
+</div>
+
+<footer>
+
+</footer>
+
+<script src="/js/jquery-2.2.4.js"></script>
+<script>
+    (function () {
+        "use strict";
+
+
+        var posts = [];
+        var blog = $.ajax("/data/blog.json", {
+            type: "GET"
+        });
+
+        var generateBlogStructure = function (object, index) {
+            return '<div class="blogStructure" id="' + index + '">' + '<h1 class="title">' + object.title + " " + ' </h1>'
+                + '<p class="content">' + object.content + '</p>'
+                + '<p class="categories">' + object.categories + '</p>'
+                + '<p class="date">' + object.date + '</p>' + '<button class="removePost hidden" data-post-id="' + index + '"><span class="glyphicon glyphicon-remove removePostSpan"></span></button></div>' + '<br>';
+        };
+
+        var clearForm = function () {
+            $('#formTopic').val('');
+            $('#formContent').val('');
+            $('#formCategories').val('');
+            $('#formDate').val('');
+        };
+
+        var refreshBlog = function (posts) {
+            $('#posts').empty();
+            posts.forEach(function (object, index) {
+                $('#posts').append(generateBlogStructure(object, index));
+            });
+
+            $('.removePost').click(function () {
+                posts.splice($(this).attr("data-post-id"), 1);
+
+                refreshBlog(posts);
+                allowRemovePostIcon();
+            });
+        };
+
+        blog.done(function (data) {
+            posts = data;
+            console.log(data);
+            refreshBlog(data);
+            allowRemovePostIcon();
+
+        });
+
+        $('#submitPost').click(function () {
+            var title = $('#formTopic').val();
+            var content = $('#formContent').val();
+            var categories = $('#formCategories').val();
+            var date = $('#formDate').val();
+            var post = {
+                title: title,
+                content: content,
+                categories: categories,
+                date: date
+            };
+            console.log(post);
+            posts.push(post);
+            refreshBlog(posts);
+            clearForm();
+            allowRemovePostIcon();
+        });
+
+        function allowRemovePostIcon() {
+            $(".blogStructure").hover(
+                function () {
+                    $(this).children(".removePost").removeClass("hidden");
+                },
+                function () {
+                    $(this).children(".removePost").addClass("hidden");
+                });
+        }
+
+
+    })();
+</script>
+</body>
+</html>

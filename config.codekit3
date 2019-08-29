@@ -103,6 +103,16 @@
 		"oAP": "/conditionals.html",
 		"oF": 0
 		},
+	"/CSS/ajax_store.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/CSS/ajax_store-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"/CSS/animate.css": {
 		"aP": 1,
 		"bl": 0,

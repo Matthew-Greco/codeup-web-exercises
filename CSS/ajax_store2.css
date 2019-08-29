@@ -1,0 +1,216 @@
+#theNavbar {
+    margin-bottom: 20px;
+    padding-top: 50px;
+    height: 195px;
+    background-size: cover;
+    /*-webkit-clip-path: polygon(0 0, 1600px 0, 1600px 50%, 0 100%);*/
+    /*clip-path: polygon(0 0, 1600px 0, 1600px 65%, 0 100%) solidblack;*/
+    border: black;
+    background-color: black;
+    text-align: center;
+    /*font-family: "American Typewriter";*/
+    font-size: 38px;
+    color: #5cb2c9;
+}
+
+
+body {
+    /*background: url('images/shattered-island.gif')*/
+}
+.container {
+    width: 75%;
+    margin-top: 65px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Aligner-item {
+    max-width: 80%;
+}
+.blogStructure {
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15), 0 5px 25px 0 rgba(0,0,0,0.15);
+    /*background: url('images/lightpaperfibers.png');*/
+}
+.blogStructure:hover {
+
+}
+/*.title {*/
+/*    font-family: "Big Caslon";*/
+/*text-shadow: 1px 1px .25px black ;*/
+/*}*/
+
+/*.content {*/
+/*    font-family: Avenir;*/
+/*}*/
+
+/*.categories {*/
+/*    font-family: "Sinhala Sangam MN";;*/
+/*}*/
+
+/*.date {*/
+/*    font-family: "Futura";*/
+/*}*/
+
+#formTopic {
+    margin-top: 20px;
+    width: 692px;
+    height: 50px;
+    border-radius: 1px;
+    border: none;
+    outline: none;
+    /*background: url('images/paper_fibers.png');*/
+    /*font-family: "Big Caslon";*/
+    font-size: 19px;
+    font-weight: 400;
+}
+
+#formTopic:focus {
+    box-shadow: 0 0px 25px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40); /* (255, 255, 255, x) for white */
+}
+
+#formContent {
+    margin-top: 10px;
+    width: 692px;
+    height: 200px;
+    border-radius: 1px;
+    border: none;
+    outline: none;
+    resize: none;
+    /*background: url('images/paper_fibers.png');*/
+    /*font-family: Avenir;*/
+    font-size: 17px;
+}
+
+#formContent:focus {
+    box-shadow: 0 0px 25px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40);
+}
+
+#formCategories {
+    width: 343px;
+    height: 30px;outline: none;
+    border-radius: 1px;
+    border: none;
+    /*background: url('images/paper_fibers.png');*/
+    /*font-family: "Sinhala Sangam MN";*/
+    font-size: 17px;
+}
+
+#formCategories:focus {
+    box-shadow: 0 0px 0px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40);
+}
+
+#formDate {
+    margin-top: 10px;
+    width: 342px;
+    height: 30px;
+    border-radius: 1px;
+    border: none;
+    outline: none;
+    /*background: url('images/paper_fibers.png');*/
+    /*font-family: "Sinhala Sangam MN";*/
+    font-size: 17px;
+}
+
+#formDate:focus {
+    box-shadow: 0 0px 0px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40);
+}
+
+.wrapper {
+    text-align: center;
+}
+
+#submitPost {
+    position: relative;
+    top: 50%;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    padding: 20px;
+    width: 150px;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    /*font-family: "American Typewriter";*/
+}
+
+#submitPost:hover {
+    background-color: #26c96c;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.19), 0 10px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+
+.removePost {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.removePostSpan {
+    color: darkgrey;
+    font-size: 15px;
+}
+
+.removePostSpan:hover {
+    color: darkred;
+}
+
+
+footer {
+    z-index: 9000;
+    height: 120px;
+    padding-top: 50px;
+    padding-right: 25px;
+    /*-webkit-clip-path: polygon(0 0, 1600px 25%, 1600px 100%, 0 100%);*/
+    background-color: #000000;
+    text-align: right;
+    /*font-family: "American Typewriter";*/
+    font-size: 24px;
+    color: #5cb2c9;
+}
+th  {
+    background-color: darkgoldenrod;
+    width: 300px;
+
+}
+
+tr {
+    flex-basis: fit-content;
+    background-color: grey;
+}
+
+table {
+    background-color: #222222;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#products {
+
+}
+
+h1 {
+    color: white;
+    background-color: black;
+}
+
+body {
+
+    text-align: center;
+    background-image: url("http://chauvinbrothers.com/attachments/Image/Hardware_1.jpg?template=generic");
+}
