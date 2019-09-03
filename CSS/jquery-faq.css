@@ -32,5 +32,10 @@ p{
 body {
     background-color: powderblue;
 }
+/*iframe{*/
+/*    display: none;*/
+/*}*/
 
-
+.gif{
+    display: none;
+}

@@ -47,6 +47,17 @@
 		"oAP": "/build/.idea",
 		"oF": 0
 		},
+	"/101-exercises.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/101-exercises-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/ajax-store.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -54,6 +65,14 @@
 		"oA": 0,
 		"oAP": "/ajax-store.html",
 		"oF": 1
+		},
+	"/ajax_blog.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/ajax_blog.html",
+		"oF": 0
 		},
 	"/answers.html": {
 		"cB": 0,
@@ -110,6 +129,16 @@
 		"ma": 0,
 		"oA": 0,
 		"oAP": "/CSS/ajax_store-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/CSS/ajax_store2.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/CSS/ajax_store2-min.css",
 		"oF": 0,
 		"oS": 3
 		},
@@ -293,6 +322,16 @@
 		"oF": 0,
 		"oS": 3
 		},
+	"/CSS/weather_map.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/CSS/weather_map-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"/css_selectors.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -300,6 +339,14 @@
 		"oA": 0,
 		"oAP": "/css_selectors.html",
 		"oF": 0
+		},
+	"/data/blog.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/data/blog-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
 		},
 	"/data/inventory.json": {
 		"ft": 524288,
@@ -594,6 +641,14 @@
 		"opt": 0,
 		"q": 100
 		},
+	"/index1.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/index1.html",
+		"oF": 0
+		},
 	"/inline_js.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -780,6 +835,17 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"/js/weather_map.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/js/weather_map-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/js/while.js": {
 		"bF": 0,
 		"ft": 64,
@@ -943,6 +1009,16 @@
 		"oAP": "/streaming-player-ui.html",
 		"oF": 0
 		},
+	"/style1.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/style1-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"/Test-n-such.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -957,6 +1033,22 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/twitter.html",
+		"oF": 0
+		},
+	"/weather_map.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/weather_map.html",
+		"oF": 0
+		},
+	"/weather_map2.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/weather_map2.html",
 		"oF": 0
 		},
 	"/welcome.html": {

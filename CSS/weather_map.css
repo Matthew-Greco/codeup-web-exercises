@@ -1,0 +1,97 @@
+/*#box {*/
+/*    display: flex;*/
+/*}*/
+
+/*body {*/
+/*    !*background-image: url("../img/blue_sky_and_green.jpg");*!*/
+/*    background-attachment: fixed;*/
+/*    background-color: #cccccc;*/
+/*    background-size: 100% 100%;*/
+
+/*    text-align: center;*/
+/*    !*font-family: Rockwell;*!*/
+/*}*/
+
+/*#map-canvas {*/
+/*    margin: 50px auto;*/
+/*    width: 60%;*/
+/*    height: 500px;*/
+/*    !*background-color: gray;*!*/
+/*    border-radius: 7%;*/
+/*    border: 3px #479b4f solid;*/
+
+/*}*/
+
+/*.boxes {*/
+/*    width: 300px;*/
+/*    !*background-image: url("../img/blue_sky.jpg");*!*/
+/*    background-size: cover;*/
+/*    background-color: #cccccc;*/
+/*    border-radius: 7%;*/
+/*    border: 2px #479b4f solid;*/
+/*    margin: 0px 80px;*/
+/*    float: left;*/
+/*}*/
+
+/*#search {*/
+/*    !*float: left;*!*/
+/*    margin: 15px 80px;*/
+/*    text-align: left;*/
+
+/*}*/
+
+/*main {*/
+/*    color: thistle;*/
+/*    text-decoration: underline overline;*/
+
+/*}*/
+/*input {*/
+/*    text-align: center;*/
+/*    border-radius: 7%;*/
+/*}*/
+/*button {*/
+/*    border-radius: 7%;*/
+/*}*/
+
+div#map.mapboxgl-map {
+
+    position:relative;
+    bottom:10%;
+
+    left:35%;
+}
+
+
+
+h2 {
+    text-align:center;
+}
+body { margin:0; padding:0; }
+
+form{
+
+    text-align: center;
+}
+pre#coordinates.coordinates{
+    position: relative;
+    left: 36%;
+    bottom: 7px;
+    width: 350px;
+}
+
+#map { position:absolute; top:0; bottom:0; width:100%; }
+
+.coordinates {
+    /*background: rgba(0,0,0,0.5);*/
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding:5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+}
+

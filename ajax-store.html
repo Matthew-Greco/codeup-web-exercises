@@ -25,7 +25,7 @@
 
     function getInventory() {
         tableBody.fadeOut();
-        tableBody.html(''); // clear previous data
+        tableBody.html('');
         $.get('data/inventory.json', function (tools) {
             tools.forEach(function (item) {
                 addRow(item);
