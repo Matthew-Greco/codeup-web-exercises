@@ -1,298 +1,230 @@
-//
-// //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, partly-cloudy-night
-// var foreCast = [
-//     {
-//         clear: 'clear-day'
-//     },
-//     {
-//         clear:'clear-night'
-//     },
-//     {
-//         rainy: 'rain'
-//     },
-//     {
-//         snowy:'snow'
-//     },
-//     {
-//         sleet:'sleet'
-//     },
-//     {
-//         breezy:'wind'
-//     },
-//     {
-//         foggy:'fog'
-//     },
-//     {
-//         cloudy:'cloudy'
-//     },
-//     {
-//         partly:'partly-cloudy-day'
-//     },
-//     {
-//         partly:'partly-cloudy-night'
-//     }
-// ];
-//
-//
-// "use strict";
-// //========================================================================================
-//
-// //DarkSky API
-//
-// $(document).ready(function() {
-//     //alert( 'The DOM has finished loading' );
-//
-//     var corsUrl = 'https://cors-anywhere.herokuapp.com';
-//     var darkSky = 'https://api.darksky.net/forecast/';
-//     var darkSkyApiKey = darkSkyToken;
-//
-//
-//     var lat = 29.4241;
-//     var long =-98.4936;
-//
-//
-//
-//     $.getJSON(corsUrl + "/" + darkSky + darkSkyApiKey + "/" + lat + "," + long).done(function(data){
-//         console.log( data.currently['windSpeed']);//the initial search of data is an object/ now traverse through as an object
-//         $('div.monitor_data').html(data.currently['apparentTemperature']+ "° F");
-//         $()('p.summary').html(data.currently['summary']);
-//         //$().html(data.currently['pressure']);
-//         //$().html(data.currently['windSpeed']);
-//
-//         //html += to get the rest of the data
-//     });
-//     var dateObject = new Date(1556704800 * 1000);
-//     console.log(dateObject.toString());
-//
-//     // Clouds
-//     // humidity
-//     // wind
-//     // pressure
-//
-//
-//
-//
-//     // var weather = $.get(corsUrl + "/" + darkSky + darkSkyApiKey + "/" + lat + "," + long).done(function(data){
-//     // console.log(data);
-//     //  console.log(weather.responseJSON);
-//     // });
-//     //
-//     //
-//     //     for (var i = 0; i < 5; i++) {
-//     //         var tr;
-//     //
-//     //         tr = $('div');
-//     //         tr.append("<h1>" + foreCast[i].clear + "</h1>");
-//     //         tr.append("<h2>" + weather.responseJSON + "</h2>");
-//     //         tr.append("<h3>" + foreCast[i].snowy + "</h3>");
-//     //         tr.append("<h4>" + foreCast[i].sleet + "</h4>");
-//     //         $('body').append(tr);
-//     //     }
-//
-//
-//
-// //============================================================================================
-//
-// //MapBox Code
-//
-//     mapboxgl.accessToken = mapBoxToken;
-//     var map = new mapboxgl.Map({
-//         container: 'map',
-//         style: 'mapbox://styles/mapbox/satellite-v9',
-//         center:[-98.491142, 29.424349], // San Antonio
-//         zoom: 8 // 2 to see US
-//     });
-//
-//     var sAAddress= ("San Antonio");
-//
-//     var marker = new mapboxgl.Marker({
-//         draggable: true
-//     })
-//         .setLngLat([-98.491142, 29.424349])
-//         .addTo(map);
-//
-//     function onDragEnd() {
-//         var lngLat = marker.getLngLat();
-//         coordinates.style.display = 'block';
-//         coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-//     }
-//
-//     marker.on('dragend', onDragEnd);
-// //==========================================================
-//
-//     geocode(sAAddress, mapBoxToken).then(function(park) {
-//         map.setCenter(park);
-//     });
-//     /*
-//             //var locationSpot = {longitude:latitude };
-//
-//             reverseGeocode(locationSpot, mapboxKey).then(function(address){
-//                 //geocode(address, mapboxKey).then(function(coor);
-//             });
-//
-//             37.2982° N, 113.0263° W
-//
-//
-//
-//
-//     */
-// });
-//
-//
+'use strict';
 
-mapboxgl.accessToken = mapBoxToken;
-var lat;
-var long;
-geocode('San Antonio, TX', mapBoxToken).then(function(SATX) {
-    lat = SATX[1];
-    long = SATX[0];
-    var mapOptions = {
-        container: 'map',
-        // style: 'mapbox://styles/nicksosa456/cjy4jqvee3on21cpbz0jzctnc',
-        zoom: 10,
-        center: SATX
-    };
-    var weather = function(lat, long){
-        $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/"+darkSkyToken+"/"+lat+","+long).done(function(data) {
-            console.log(data);
-            for (var x = 0; x <=2; x++) {
-                cycleDays(data, x);
-            }}).fail(function(jqXhr, status, error) {
-            console.log("Response status: " + status);
-            console.log("Error object: " + error);
+var show = document.getElementById("showWeather");
+var inputCity = document.getElementById("input-city");
+var cityNameDiv = document.getElementById("cityName");
+var city = "";
+var cityCoords;
+var browserLongitude;
+var browserLatitude;
+var loc = "";
+var proxy = 'https://cors-anywhere.herokuapp.com/';
+var darkSky = 'https://api.darksky.net/forecast/';
+var currentDarkSkyData;
+var cards = document.getElementById("cards");
+var card = document.getElementsByClassName('card');
+
+
+function setLoc(long, lat) {
+    loc = lat + "," + long;
+    return loc;
+}
+
+function updateDarkSkyDate() {
+    $.get(proxy + darkSky + darkSkyKey + '/' + loc).done(function (data) {
+        currentDarkSkyData = data;
+        show.innerText = data.currently.apparentTemperature + " F";
+    }).fail(function (jqXhr, status) {
+        console.log(status);
+    });
+}
+
+document.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        console.log(inputCity.value);
+        cityNameDiv.innerText = inputCity.value;
+        city = inputCity.value;
+        geocode(city, mapBoxToken).then(function (result) {
+            cityCoords = result;
         });
-    };
-    weather(lat, long);
-    var map = new mapboxgl.Map(mapOptions);
-    var marker = new mapboxgl.Marker()
-        .setLngLat(SATX)
-        .setDraggable(true)
-        .addTo(map);
-    function onDragEnd() {
-        var lnglat = marker.getLngLat();
-        lat = lnglat.lat;
-        long = lnglat.lng;
-        weather(lat, long);
+        setTimeout(function () {
+            flyMe(cityCoords[0], cityCoords[1]);
+        }, 500);
+        setTimeout(function () {
+            setLoc(cityCoords[0], cityCoords[1]);
+            updateDarkSkyDate();
+            pushCardDataToPage();
+        }, 2000);
+        setTimeout(function () {
+            manageCardData(currentDarkSkyData);
+            pushCardDataToPage();
+        }, 4000);
     }
-    marker.on('dragend', onDragEnd);
-    var geocoder = new MapboxGeocoder({ // Initialize the geocoder
-        accessToken: mapboxgl.accessToken, // Set the access token
-        mapboxgl: mapboxgl // Set the mapbox-gl instance
-    });
-    // Add the geocoder to the map
-    map.addControl(geocoder);
-    geocoder.on('result', function(e) {
-        lat = e.result.geometry.coordinates[1];
-        long = e.result.geometry.coordinates[0];
-        weather(lat, long);
-    });
-    map.addControl(new mapboxgl.NavigationControl());
 });
-var icons = [
-    {
-        icon: "clear-day",
-        name: "Sunny",
-        summary: "Clear, sunny day",
-        url: "icons/weather-color/SVG/500/sun.svg"
-    },
-    {
-        icon: "clear-night",
-        name: "Clear",
-        summary: "Clear night sky",
-        url: "icons/weather-color/SVG/500/moon.svg"
-    },
-    {
-        icon: "rain",
-        name: "Rain",
-        summary: "Rainy day",
-        url: "icons/weather-color/SVG/500/rain.svg"
-    },
-    {
-        icon: "snow",
-        name: "Snow",
-        summary: "Snowfall today",
-        url: "icons/weather-color/SVG/500/snow.svg"
-    },
-    {
-        icon: "sleet",
-        name: "Sleet",
-        summary: "Sleet today",
-        url: "icons/weather-color/SVG/500/hail.svg"
-    },
-    {
-        icon: "wind",
-        name: "Windy",
-        summary: "High winds",
-        url: "icons/weather-color/SVG/500/windy.svg"
-    },
-    {
-        icon: "fog",
-        name: "Foggy",
-        summary: "Foggy day",
-        url: "icons/weather-color/SVG/500/fog.svg"
-    },
-    {
-        icon: "cloudy",
-        name: "Cloudy",
-        summary: "Cloudy day",
-        url: "icons/weather-color/SVG/500/cloudy.svg"
-    },
-    {
-        icon: "partly-cloudy-day",
-        name: "Cloudy",
-        summary: "Partly cloudy",
-        url: "icons/weather-color/SVG/500/cloudy-day.svg"
-    },
-    {
-        icon: "partly-cloudy-night",
-        name: "Cloudy",
-        summary: "Partly Cloudy",
-        url: "icons/weather-color/SVG/500/cloudy-night.svg"
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
     }
-];
-var cycleDays = function(data, index){
-    var day = $(".day"+index);
-    var name;
-    var icon;
-    var summary;
-    var temp = "F";
-    var buildHTML = function (w, i) {
-        var tempHigh = w.daily.data[i].temperatureHigh;
-        var tempLow = w.daily.data[i].temperatureLow;
-        var weatherType = function(){
-            icons.forEach(function (ele) {
-                if (w.daily.data[i].icon === ele.icon){
-                    name = ele.name;
-                    summary = ele.summary;
-                    icon = ele.url;
-                }
-            });
-        };
-        weatherType();
-        $('.imgDegree').click(function () {
-            if (temp === 'F') {
-                temp = 'C';
-                $(this).removeClass('fahrenheit');
-                $(this).addClass('celsius');
-                tempHigh = ((tempHigh - 32) * (5/9) );
-                tempLow= ((tempLow - 32) * (5/9) );
-            } else if (temp === 'C') {
-                temp = 'F';
-                $(this).removeClass('celsius');
-                $(this).addClass('fahrenheit');
-                tempHigh = ((tempHigh * (9/5) ) + 32);
-                tempLow = ((tempLow * (9/5) ) + 32);
+}
+
+function showPosition(position) {
+    show.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+    browserLongitude = position.coords.longitude;
+    browserLatitude = position.coords.latitude;
+    loc = position.coords.latitude + "," + position.coords.longitude;
+    return loc;
+}
+
+setTimeout(function () {
+    getLocation();
+
+
+}, 3000);
+
+
+// conversion formulas
+// function convertFtoC(num) {
+//     return (num - 32) / 1.8;
+// }
+//
+// function convertCtoF(num) {
+//     return (num * 1.8) + 32;
+// }
+
+
+// Basic specs for map
+mapboxgl.accessToken = mapBoxToken;
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    zoom: 0
+});
+
+// Fly to location when 'Fly' button is pressed
+document.getElementById("fly").addEventListener("click", function () {
+    console.log("fly was pressed");
+    map.flyTo({
+        center: [
+            -74.50 + (Math.random() - 0.5) * 10,
+            40 + (Math.random() - 0.5) * 10],
+        zoom: 18
+    });
+});
+
+// function to fly somewhere.
+function flyMe(argsLong, argsLat) {
+    map.flyTo({
+        center: [argsLong, argsLat],
+        zoom: 10
+    });
+}
+
+
+function dayOfTheWeek(date) {
+    var tempDateSS = date.toString().substring(0, 3);
+    var temp = "";
+
+    switch (tempDateSS) {
+        case 'Sun':
+            temp = "Sunday";
+            break;
+        case 'Mon':
+            temp = "Monday";
+            break;
+        case 'Tue':
+            temp = "Tuesday";
+            break;
+        case 'Wed':
+            temp = "Wednesday";
+            break;
+        case 'Thu':
+            temp = "Thursday";
+            break;
+        case 'Fri':
+            temp = "Friday";
+            break;
+        case 'Sat':
+            temp = "Saturday";
+            break;
+    }
+
+    return temp;
+}
+
+function manageCardData(obj) {
+    var tempStr = "";
+    var doNothing;
+    var tempDate = "";
+    var dayOfWeekstr = "";
+
+
+    obj.daily.data.forEach(function (e, i) {
+        if (i <= 2) {
+            tempDate = new Date(e.time * 1000);
+            dayOfWeekstr = dayOfTheWeek(tempDate);
+
+            tempStr += '<div class="card" style="width: 18rem;">';
+            tempStr += '<div class="card-body">';
+            if (i === 0) {
+                tempStr += '<h5 class="card-title" id="summary">Today</h5>';
+            } else if (i === 1) {
+                tempStr += '<h5 class="card-title" id="summary">Tomorrow</h5>';
+            } else {
+                tempStr += '<h5 class="card-title" id="summary">' + dayOfWeekstr + '</h5>';
             }
-            $('.temp').html("<p class='temp is-size-1'>"+Math.round(tempHigh)+"º/"
-                +Math.round(tempLow)+"º</p>")
+            tempStr += '<h6 class="card-subtitle mb-2 text-muted">' + e.summary + '</h6>'; //img controler
+            tempStr += '<p class="card-text"></br></p>'; // display current temperature
+            tempStr += '<p class="card-text"><small>High / Low: </small></br>' + e.temperatureHigh + ' / ' + e.temperatureLow + '</br></p>';
+            tempStr += '<p class="card-text"><small>Wind Speed</small></br>';
+            tempStr += '<img class="windIcon" src="img/windVector.svg">' + e.windSpeed + '<small>mph</small></br></p>';
+            tempStr += '</div>';
+            tempStr += '</div>';
+        } else {
+            doNothing = null;
+        }
+    });
+
+    return tempStr;
+}
+
+
+
+// Print card data to page.
+function pushCardDataToPage() {
+    cards.innerHTML = manageCardData(currentDarkSkyData);
+    for (var i = 0; i < card.length; i++) {
+        card[i].style.visibility = "visible";
+    }
+}
+
+window.onload = () => {
+
+    const aeris = new AerisWeather('ij1agB9njtuQu96ScjO7H', 'k05wcMaqGMC1meYUdWI19yeJHTgKodmL9fK9S7SZ');
+
+    aeris.views().then(views => {
+        const map = new views.InteractiveMap(document.getElementById('map1'), {
+            center: {
+                lat: 39.7,
+                lon: -93.38
+            },
+            zoom: 4,
+            layers: 'blue-marble,tropical-cyclones,radar,admin-cities-dk',
+            timeline: {
+                from: -2 * 3600, // seconds
+                to: 0 * 3600
+            }
         });
-        day.html('');
-        day.append("<p class='temp is-size-1'>"+Math.round(tempHigh)+"º/"
-            +Math.round(tempLow)+"º</p>"
-            +"\n <img class='weather-icon' src='"+icon+"' alt=''> \n"+"<p><span class='large-font'>"+name+":</span> "+summary
-            +"</p>\n<p><span class='large-font'>Humidity:</span> "+ Math.round(w.daily.data[i].humidity*100)
-            +"</p>\n<p><span class='large-font'>Wind:</span> "+w.daily.data[i].windSpeed
-            +"</p>\n<p><span class='large-font'>Pressure:</span> "+w.daily.data[i].pressure+"</p>");
-    };
-    buildHTML(data, index);
+    // Animation controls
+    const control = document.getElementById('map-toggle-anim');
+    map.on('load', () => {
+
+        // update the control label based on the map animation state
+        map.on('timeline:play', () => {
+            control.innerHTML = 'Stop';
+});
+    map.on('timeline:stop', () => {
+        control.innerHTML = 'Play';
+});
+
+    // toggle the animation when the play/stop button is clicked
+    control.addEventListener('click', function(e) {
+        e.preventDefault();
+        map.timeline.toggle();
+    });
+});
+});
 };
